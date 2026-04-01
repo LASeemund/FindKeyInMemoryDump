@@ -14,14 +14,14 @@ O principal objetivo é demonstrar uma abordagem de análise de memória voltada
 
 ## Estrutura do repositório
 
-* `Cifr.py` — script em Python para cifrar arquivos com AES-256-CBC.
-* `Cifr.c` — implementação em C para cifragem com OpenSSL.
+* `cifr.py` — script em Python para cifrar arquivos com AES-256-CBC.
+* `cifr.c` — implementação em C para cifragem com OpenSSL.
 * `findkey.c` — programa principal para varrer o arquivo e buscar a chave expandida em memória.
 * `tccExpandedkey.c` — código de apoio para gerar e exibir a expansão da chave AES-256.
 
 ## Descrição dos arquivos
 
-### `Cifr.py`
+### `cifr.py`
 
 Script em Python que utiliza a biblioteca `cryptography` para cifrar arquivos com **AES-256-CBC**. Caso o nome do arquivo não exista, a string informada é usada como entrada, permitindo testes rápidos.
 
@@ -29,10 +29,10 @@ Características principais:
 
 * aceita chave em formato hexadecimal;
 * aplica padding PKCS7;
-* utiliza um IV fixo para fins experimentais;
+* utiliza um vetor de inicialização fixo para fins experimentais;
 * salva o resultado em um novo arquivo com extensão `.aes`.
 
-### `Cifr.c`
+### `cifr.c`
 
 Versão em C da rotina de cifragem, usando OpenSSL. O código emprega AES com chave de 256 bits e grava o IV no início do arquivo de saída.
 
@@ -71,70 +71,11 @@ Serve como referência para conferência do comportamento do algoritmo implement
 * Python 3.x
 * Biblioteca `cryptography`
 
-Instalação:
-
-```bash
-pip install cryptography
-```
-
 ### C
 
 * GCC ou compilador compatível
 * Biblioteca OpenSSL
 * Suporte a `pthread`
-
-Exemplo de instalação no Linux:
-
-```bash
-sudo apt update
-sudo apt install build-essential libssl-dev
-```
-
-## Compilação
-
-### `Cifr.c`
-
-```bash
-gcc Cifr.c -o Cifr -lcrypto
-```
-
-### `findkey.c`
-
-```bash
-gcc findkey.c -o findkey -lpthread
-```
-
-### `tccExpandedkey.c`
-
-```bash
-gcc tccExpandedkey.c -o tccExpandedkey
-```
-
-## Uso
-
-### Cifrar um arquivo com Python
-
-```bash
-python3 Cifr.py arquivo.txt
-```
-
-### Cifrar um arquivo com C
-
-```bash
-./Cifr arquivo.txt
-```
-
-### Procurar uma chave em um arquivo/dump
-
-```bash
-./findkey dump.bin
-```
-
-### Gerar a chave expandida para teste
-
-```bash
-./tccExpandedkey
-```
 
 ## Fluxo experimental do projeto
 
@@ -161,5 +102,5 @@ Ao executar a análise sobre um arquivo que contenha a chave e sua expansão, o 
 Este repositório apoia o estudo de técnicas de **análise forense de memória** e **recuperação de chaves criptográficas**, mostrando de maneira prática como dados sensíveis podem permanecer acessíveis em memória após o uso de rotinas criptográficas.
 
 ## Autor
-
+Lucas Alexandre Seemund.
 Projeto desenvolvido para fins acadêmicos no contexto de TCC.
