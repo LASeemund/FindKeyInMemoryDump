@@ -16,6 +16,7 @@ O principal objetivo é demonstrar uma abordagem de análise de memória voltada
 
 * `cifr.py` — script em Python para cifrar arquivos com AES-256-CBC.
 * `cifr.c` — implementação em C para cifragem com OpenSSL.
+* `cifr.go` — implementação em Golang para cifragem.
 * `findkey.c` — programa principal para varrer o arquivo e buscar a chave expandida em memória.
 * `tccExpandedkey.c` — código de apoio para gerar e exibir a expansão da chave AES-256.
 
@@ -25,23 +26,13 @@ O principal objetivo é demonstrar uma abordagem de análise de memória voltada
 
 Script em Python que utiliza a biblioteca `cryptography` para cifrar arquivos com **AES-256-CBC**. Caso o nome do arquivo não exista, a string informada é usada como entrada, permitindo testes rápidos.
 
-Características principais:
-
-* aceita chave em formato hexadecimal;
-* aplica padding PKCS7;
-* utiliza um vetor de inicialização fixo para fins experimentais;
-* salva o resultado em um novo arquivo com extensão `.aes`.
-
 ### `cifr.c`
 
 Versão em C da rotina de cifragem, usando OpenSSL. O código emprega AES com chave de 256 bits e grava o IV no início do arquivo de saída.
 
-Características principais:
+* ### `cifr.c`
 
-* leitura binária de arquivo;
-* cifragem com `AES_cfb128_encrypt`;
-* geração de saída com extensão `.enc`;
-* impressão da chave expandida na inicialização da rotina.
+Implementação em Go de uma rotina de cifragem utilizando a biblioteca padrão da linguagem. O programa realiza a cifragem de arquivos com AES-256 no modo CBC, aplicando padding PKCS#7 e armazenando o vetor de inicialização (IV) no início do arquivo gerado.
 
 ### `findkey.c`
 
@@ -76,6 +67,10 @@ Serve como referência para conferência do comportamento do algoritmo implement
 * GCC ou compilador compatível
 * Biblioteca OpenSSL
 * Suporte a `pthread`
+
+### Golang
+
+* Compilador Golang
 
 ## Fluxo experimental do projeto
 
