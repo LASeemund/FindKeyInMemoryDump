@@ -30,7 +30,7 @@ Script em Python que utiliza a biblioteca `cryptography` para cifrar arquivos co
 
 Versão em C da rotina de cifragem, usando OpenSSL. O código emprega AES com chave de 256 bits e grava o IV no início do arquivo de saída.
 
-* ### `cifr.c`
+### `cifr.go`
 
 Implementação em Go de uma rotina de cifragem utilizando a biblioteca padrão da linguagem. O programa realiza a cifragem de arquivos com AES-256 no modo CBC, aplicando padding PKCS#7 e armazenando o vetor de inicialização (IV) no início do arquivo gerado.
 
